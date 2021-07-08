@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 import qs from 'query-string'
 
 import {
@@ -68,18 +67,10 @@ class PagesMyRequests extends React.Component {
       <div className="list-group">
         {
           requests.map((item) => (
-            <Link
-              key={item.id}
-              to={`/requests/${item.id}`}
-              className="list-group-item list-group-item-action"
-            >
-
-              <div className="d-flex flex-column justify-content-center align-items-center">
-                {item.plan}
-              </div>
-
+            <>
+              <div className="d-flex flex-column justify-content-center align-items-center" />
               <div className="btn-group btn-group-sm mt-3">
-
+                {item.id}
                 <button
                   className="btn btn-info"
                   type="button"
@@ -100,7 +91,7 @@ class PagesMyRequests extends React.Component {
                   disabled={destroyingIDs.includes(item.id)}
                 >Delete</button>
               </div>
-            </Link>
+            </>
           ))
         }
         {showModalsRequestsEdit && <ModalsRequestsEdit close={this.closeModalsRequestsEdit} onSubmit={this.handleEditSubmit} request={selectedRequest} />}
