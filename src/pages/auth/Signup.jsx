@@ -16,6 +16,7 @@ class PagesAuthSignup extends React.Component {
   }
 
   handleSignupSubmit(values) {
+    console.log(values)
     this.props.authSignup(values).then(() => {
       const { history: { push } } = this.props
       push('/auth/login')

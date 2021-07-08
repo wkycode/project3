@@ -3,8 +3,18 @@ import PropTypes from 'prop-types'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import * as yup from 'yup'
 
-const RenderForm = ({ errors, touched, isSubmitting }) => (
+const RenderForm = ({ errors, touched, isSubmitting, setFieldValue }) => (
   <Form>
+    <div className="form-group">
+      <label htmlFor="username">username</label>
+      <Field
+        id="username"
+        className={`form-control ${(errors.username && touched.username ? ' is-invalid' : '')}`}
+        name="username"
+        type="username"
+      />
+      <ErrorMessage component="div" className="invalid-feedback" name="email" />
+    </div>
     <div className="form-group">
       <label htmlFor="email">Email</label>
       <Field
@@ -38,6 +48,21 @@ const RenderForm = ({ errors, touched, isSubmitting }) => (
       <ErrorMessage component="div" className="invalid-feedback" name="passwordConfirmation" />
     </div>
 
+    <div className="form-group">
+      <label>Avatar</label>
+      <div className={`custom-file ${(errors.avatar && touched.avatar ? ' is-invalid' : '')}`}>
+        <input
+          id="avatar"
+          className={`custom-file-input ${(errors.avatar && touched.avatar ? ' is-invalid' : '')}`}
+          name="avatar"
+          type="file"
+          onChange={(event) => { setFieldValue('avatar', event.currentTarget.files[0]) }}
+        />
+        <label className="custom-file-label" htmlFor="avatar">Upload Image</label>
+      </div>
+      <ErrorMessage component="div" className="invalid-feedback" name="avatar" />
+    </div>
+
     <button className="btn btn-success" type="submit" disabled={isSubmitting}>Submit</button>
   </Form>
 )
@@ -48,6 +73,7 @@ RenderForm.propTypes = {
 }
 
 const signupSchema = yup.object().shape({
+  username: yup.string().required('Required'),
   email: yup.string().email().required('Required'),
   password: yup.string().min(6).required('Required'),
   passwordConfirmation: yup.string().when('password', {
@@ -62,9 +88,12 @@ const signupSchema = yup.object().shape({
 const FormsAuthSignup = ({ onSubmit }) => (
   <Formik
     initialValues={{
+      username: '',
       email: '',
       password: '',
-      passwordConfirmation: ''
+      passwordConfirmation: '',
+      avatar: ''
+
     }}
     validationSchema={signupSchema}
     onSubmit={onSubmit}

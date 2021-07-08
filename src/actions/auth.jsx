@@ -5,16 +5,24 @@ import {
   unsetCurrentUser
 } from '@/actions/my/profile'
 
-export const authSignup = (values) => () => new Promise((resolve, reject) => axios({
-  method: 'POST',
-  url: 'http://localhost:3000/api/auth/signup',
-  data: values,
-  withCredentials: true
-}).then((resp) => {
-  resolve(resp)
-}).catch((err) => {
-  reject(err)
-}))
+export const authSignup = (values) => () => new Promise((resolve, reject) => {
+  const formData = new FormData()
+
+  Object.keys(values).forEach((key) => {
+    formData.append(key, values[key])
+  })
+
+  axios({
+    method: 'POST',
+    url: 'http://localhost:3000/api/auth/signup',
+    data: formData,
+    withCredentials: true
+  }).then((resp) => {
+    resolve(resp)
+  }).catch((err) => {
+    reject(err)
+  })
+})
 
 export const authLogin = (values) => (dispatch) => new Promise((resolve, reject) => axios({
   method: 'POST',
