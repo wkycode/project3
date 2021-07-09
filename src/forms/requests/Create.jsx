@@ -6,6 +6,17 @@ import * as yup from 'yup'
 const RenderForm = ({ errors, touched, isSubmitting }) => (
   <Form>
     <div className="form-group">
+      <h5>Website Title</h5>
+      <Field
+        id="title"
+        className={`form-control ${(errors.title && touched.title ? ' is-invalid' : '')}`}
+        name="title"
+        type="text"
+      />
+      <ErrorMessage component="div" className="invalid-feedback" name="title" />
+    </div>
+
+    <div className="form-group">
       <h5>Plan</h5>
       <Field
         id="plan"

@@ -42,10 +42,12 @@ class PagesMyRequests extends React.Component {
     this.props.destroyRequest(id)
   }
 
-  handleEditSubmit(values) {
+  handleEditSubmit(values, formik) {
     const { selectedRequest: { id } } = this.state
     this.props.updateRequest(values, id).then(() => {
       this.closeModalsRequestsEdit()
+    }).finally(() => {
+      formik.setSubmitting(false)
     })
   }
 
@@ -70,7 +72,7 @@ class PagesMyRequests extends React.Component {
             <>
               <div className="d-flex flex-column justify-content-center align-items-center" />
               <div className="btn-group btn-group-sm mt-3">
-                {item.id}
+                {item.title}
                 <button
                   className="btn btn-info"
                   type="button"

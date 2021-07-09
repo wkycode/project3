@@ -19,15 +19,22 @@ class PagesPlan extends React.Component {
     this.openModalsRequestsCreate = this.openModalsRequestsCreate.bind(this)
   }
 
-  handleCreateSubmit(values) {
+  handleCreateSubmit(values, formik) {
     this.props.createRequest(values).then((resp) => {
       const { history: { push } } = this.props
       push(`/my/requests?RequestId=${resp.data.request.id}`)
+    }).finally(() => {
+      formik.setSubmitting(false)
     })
   }
 
   openModalsRequestsCreate(selectedPlan) {
-    this.setState({ showModalsRequestsCreate: true, selectedPlan })
+    const { stateCurrentUser: { currentUser } } = this.props
+    if (!currentUser) {
+      this.props.history.push('/auth/signup')
+    } else {
+      this.setState({ showModalsRequestsCreate: true, selectedPlan })
+    }
   }
 
   closeModalsRequestsCreate() {
@@ -119,11 +126,13 @@ class PagesPlan extends React.Component {
 
 PagesPlan.propTypes = {
   history: PropTypes.shape().isRequired,
-  createRequest: PropTypes.func.isRequired
+  createRequest: PropTypes.func.isRequired,
+  stateCurrentUser: PropTypes.shape().isRequired
 }
 
 const mapStateToProps = (state) => ({
-  stateRequests: state.requests
+  stateRequests: state.requests,
+  stateCurrentUser: state.currentUser
 })
 
 const mapDispatchToProps = {
