@@ -23,27 +23,30 @@ class LayoutsNavbar extends React.Component {
     const { stateCurrentUser: { currentUser } } = this.props
 
     return (
-      <Navbar id="layouts-navbar" bg="dark" variant="dark" expand="lg" collapseOnSelect>
-        <NavDropdown title="Menu" id="basic-nav-dropdown">
-          <NavDropdown.Item href="/plans">Plans</NavDropdown.Item>
-          <NavDropdown.Item href="/products">Products</NavDropdown.Item>
-          <NavDropdown.Item href="/services">Services</NavDropdown.Item>
+      <Navbar id="layouts-navbar" bg="light" variant="dark" expand="lg" collapseOnSelect>
 
-        </NavDropdown>
+        <Navbar.Brand id="home-page-redirect" as={NavLink} to="/" href="#"> WC DIGITAL </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ml-auto">
-            <Navbar.Brand as={NavLink} to="/" href="#">Home Page</Navbar.Brand>
+            <NavDropdown id="nav-dropdown" title="Menu">
+              <NavDropdown.Item className="dropdown-text" href="/plans">Plans</NavDropdown.Item>
+              <NavDropdown.Item className="dropdown-text" href="/products">Products</NavDropdown.Item>
+              <NavDropdown.Item className="dropdown-text" href="/services">Services</NavDropdown.Item>
+            </NavDropdown>
             {
               currentUser ? (
                 <>
-                  <Nav.Link as={NavLink} to="/my/requests" eventKey="A">My Request</Nav.Link>
-                  <Nav.Link eventKey="C" onClick={this.handleLogoutClick}>Logout</Nav.Link>
+                  <NavDropdown id="nav-current-user-dropdown" title="My">
+                    <NavDropdown.Item className="dropdown-text" href="/my/profile">Profile</NavDropdown.Item>
+                    <NavDropdown.Item className="dropdown-text" href="/my/requests">Requests</NavDropdown.Item>
+                  </NavDropdown>
+                  <Nav.Link className="auth-btn" eventKey="C" onClick={this.handleLogoutClick}>Logout</Nav.Link>
                 </>
               ) : (
                 <>
-                  <Nav.Link as={NavLink} to="/auth/signup" eventKey="A">Signup</Nav.Link>
-                  <Nav.Link as={NavLink} to="/auth/login" eventKey="B">Login</Nav.Link>
+                  <Nav.Link className="auth-btn" as={NavLink} to="/auth/signup" eventKey="A">Signup</Nav.Link>
+                  <Nav.Link className="auth-btn" as={NavLink} to="/auth/login" eventKey="B">Login</Nav.Link>
                 </>
               )
             }

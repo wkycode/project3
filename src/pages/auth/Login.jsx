@@ -18,7 +18,9 @@ class PagesAuthLogin extends React.Component {
   handleLoginSubmit(values, formik) {
     this.props.authLogin(values).then(() => {
       const { history: { push } } = this.props
-      push('/')
+      const pathname = window.localStorage.getItem('originalPath') || '/'
+      window.localStorage.removeItem('originalPath')
+      push(pathname)
     }).finally(() => {
       formik.setSubmitting(false)
     })

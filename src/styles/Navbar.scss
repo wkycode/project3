@@ -1,5 +1,31 @@
-// #layouts-navbar{
-//   position: absolute;
-//   width: 100vw;
-//   color:black;
-// }
+#layouts-navbar{
+  z-index: 10;
+  background-color: #f07654;
+  background-image: linear-gradient(315deg, #e2a08d 0%, #fcd181 74%);
+  border-bottom: 1px solid #eec374;
+  #home-page-redirect{
+    color: #ed5e5d;
+    font-weight: 900;
+    font-size: x-large;
+  }
+  #nav-dropdown{
+    color: #ed5e5d;
+    font-weight:700;
+    font-size: large;
+  }
+  .auth-btn{
+    color:#ed5e5d;
+    font-weight:700;
+    font-size: large;
+  }
+  #nav-current-user-dropdown{
+    color:#ed5e5d;
+    font-weight:700;
+    font-size: large;
+  }
+  .dropdown-text{
+    color:#ed5e5d;
+    font-weight:500;
+    font-size: medium;
+  }
+}

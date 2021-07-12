@@ -21,9 +21,9 @@ export const getCurrentUser = () => (dispatch) => new Promise((resolve, reject) 
   })
 })
 
-export const UPDATE_CURRENTUSER = 'UPDATE_CURRENTUSER'
+export const UPDATE_CURRENT_USER = 'UPDATE_CURRENT_USER'
 export const updateCurrentUser = (values) => (dispatch) => new Promise((resolve, reject) => {
-  dispatch(loading(UPDATE_CURRENTUSER, { loading: true }))
+  dispatch(loading(UPDATE_CURRENT_USER, { loading: true }))
   axios({
     method: 'PUT',
     url: 'http://localhost:3000/api/my/profile',
@@ -35,6 +35,6 @@ export const updateCurrentUser = (values) => (dispatch) => new Promise((resolve,
   }).catch((err) => {
     reject(err)
   }).finally(() => {
-    loading(UPDATE_CURRENTUSER, { loading: false })
+    loading(UPDATE_CURRENT_USER, { loading: false })
   })
 })

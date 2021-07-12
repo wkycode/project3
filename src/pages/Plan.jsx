@@ -31,6 +31,7 @@ class PagesPlan extends React.Component {
   openModalsRequestsCreate(selectedPlan) {
     const { stateCurrentUser: { currentUser } } = this.props
     if (!currentUser) {
+      window.localStorage.setItem('originalPath', window.location.pathname)
       this.props.history.push('/auth/signup')
     } else {
       this.setState({ showModalsRequestsCreate: true, selectedPlan })
@@ -45,10 +46,10 @@ class PagesPlan extends React.Component {
     const { showModalsRequestsCreate, selectedPlan } = this.state
     return (
       <>
-        <div id="pages-home" className="container py-3">
+        <div id="pages-plan" className="py-3">
           <header>
-            <div className="pricing-header p-3 pb-md-4 mx-auto text-center">
-              <h1 className="display-4 fw-normal">Pricing</h1>
+            <div id="pricing-header">
+              <h1>Pricing</h1>
               <p className="fs-5 text-muted">No bullshit, Let&apos;s go</p>
             </div>
           </header>
