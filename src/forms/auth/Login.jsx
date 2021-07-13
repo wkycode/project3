@@ -5,6 +5,7 @@ import * as yup from 'yup'
 
 const RenderForm = ({ errors, touched, isSubmitting }) => (
   <Form>
+
     <div className="form-group">
       <label htmlFor="email">Email</label>
       <Field

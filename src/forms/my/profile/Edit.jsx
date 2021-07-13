@@ -6,14 +6,25 @@ import * as yup from 'yup'
 const RenderForm = ({ errors, touched, isSubmitting }) => (
   <Form>
     <div className="form-group">
-      <label htmlFor="password">New Password</label>
+      <label htmlFor="currentPassword">Current Password</label>
       <Field
-        id="password"
-        className={`form - control ${(errors.password && touched.password ? ' is-invalid' : '')}`}
-        name="password"
+        id="currentPassword"
+        className={`form - control ${(errors.currentPassword && touched.currentPassword ? ' is-invalid' : '')}`}
+        name="currentPassword"
         type="password"
       />
-      <ErrorMessage component="div" className="invalid-feedback" name="password" />
+      <ErrorMessage component="div" className="invalid-feedback" name="currentPassword" />
+    </div>
+
+    <div className="form-group">
+      <label htmlFor="newPassword">New Password</label>
+      <Field
+        id="newPassword"
+        className={`form - control ${(errors.newPassword && touched.newPassword ? ' is-invalid' : '')}`}
+        name="newPassword"
+        type="password"
+      />
+      <ErrorMessage component="div" className="invalid-feedback" name="newPassword" />
     </div>
 
     <div className="form-group">
@@ -37,11 +48,12 @@ RenderForm.propTypes = {
 }
 
 const editSchema = yup.object().shape({
-  password: yup.string().min(6).required('Required'),
-  passwordConfirmation: yup.string().when('password', {
+  currentPassword: yup.string().required('Required'),
+  newPassword: yup.string().min(6).required('Required'),
+  passwordConfirmation: yup.string().when('newPassword', {
     is: (val) => (!!(val && val.length > 0)),
     then: yup.string().oneOf(
-      [yup.ref('password')],
+      [yup.ref('newPassword')],
       'Both password need to be the same'
     )
   })
@@ -50,7 +62,8 @@ const editSchema = yup.object().shape({
 const FormMyProfileEdit = ({ onSubmit }) => (
   <Formik
     initialValues={{
-      password: '',
+      currentPassword: '',
+      newPassword: '',
       passwordConfirmation: ''
     }}
     validationSchema={editSchema}

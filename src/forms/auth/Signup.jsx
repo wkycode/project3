@@ -13,7 +13,7 @@ const RenderForm = ({ errors, touched, isSubmitting, setFieldValue }) => (
         name="username"
         type="username"
       />
-      <ErrorMessage component="div" className="invalid-feedback" name="email" />
+      <ErrorMessage component="div" className="invalid-feedback" name="username" />
     </div>
     <div className="form-group">
       <label htmlFor="email">Email</label>
@@ -56,6 +56,7 @@ const RenderForm = ({ errors, touched, isSubmitting, setFieldValue }) => (
           className={`custom-file-input ${(errors.avatar && touched.avatar ? ' is-invalid' : '')}`}
           name="avatar"
           type="file"
+          aria-describedby="custom-file-label"
           onChange={(event) => { setFieldValue('avatar', event.currentTarget.files[0]) }}
         />
         <label className="custom-file-label" htmlFor="avatar">Upload Image</label>
@@ -69,7 +70,8 @@ const RenderForm = ({ errors, touched, isSubmitting, setFieldValue }) => (
 RenderForm.propTypes = {
   errors: PropTypes.shape().isRequired,
   touched: PropTypes.shape().isRequired,
-  isSubmitting: PropTypes.bool.isRequired
+  isSubmitting: PropTypes.bool.isRequired,
+  setFieldValue: PropTypes.func.isRequired
 }
 
 const signupSchema = yup.object().shape({

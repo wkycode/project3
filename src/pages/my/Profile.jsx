@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/no-unused-state */
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -31,8 +33,7 @@ class PagesMyProfile extends React.Component {
 
   handleEditSubmit(values) {
     this.props.updateCurrentUser(values).then(() => {
-      const { history: { push } } = this.props
-      push('/')
+      this.closeModalsRequestsEdit()
     })
   }
 
@@ -50,14 +51,13 @@ class PagesMyProfile extends React.Component {
     return (
       <div>
         <Image
-          width={400}
-          height={400}
+          width={300}
+          height={300}
           src={currentUser.avatar}
           roundedCircle
         />
-
-        <div>{currentUser.username}</div>
-        <div>{currentUser.email}</div>
+        <div>Username: {currentUser.username}</div>
+        <div>Email: {currentUser.email}</div>
 
         <button
           className="btn btn-success mb-3"
@@ -77,12 +77,14 @@ class PagesMyProfile extends React.Component {
       <div className="flex-grow-1">
         {
           requests.length > 0 ? (
-            requests.map((item) => (
+            requests.slice(0, 3).map((item) => (
               <div key={item.id}>
                 <Card style={{ width: '18rem' }}>
                   <Card.Header>My Order</Card.Header>
                   <ListGroup variant="flush">
-                    <ListGroup.Item>{item.title} </ListGroup.Item>
+                    <ListGroup.Item>{item.id}</ListGroup.Item>
+                    <ListGroup.Item>{item.template}</ListGroup.Item>
+                    <ListGroup.Item>{item.note}</ListGroup.Item>
                   </ListGroup>
                 </Card>
               </div>
@@ -110,7 +112,6 @@ class PagesMyProfile extends React.Component {
 }
 
 PagesMyProfile.propTypes = {
-  history: PropTypes.shape().isRequired,
   stateCurrentUser: PropTypes.shape().isRequired,
   stateRequests: PropTypes.shape().isRequired,
   updateCurrentUser: PropTypes.func.isRequired,

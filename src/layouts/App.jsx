@@ -2,17 +2,25 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Switch, BrowserRouter as Router, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { ToastContainer } from 'react-toastify'
 
 import LayoutsNavbar from '@/layouts/Navbar'
 import PrivateRoute from '@/components/PrivateRoute'
 import Loading from '@/components/Loading'
 
+import PagesServices from '@/pages/Services'
+import PageWeb from '@/pages/web'
+
+import PagesProduct from '@/pages/Product'
+import Product1 from '@/pages/product/product1'
+import Product2 from '@/pages/product/product2'
+import Product3 from '@/pages/product/product3'
+import Product4 from '@/pages/product/product4'
+
 import PagesHome from '@/pages/Home'
 import PagesPlan from '@/pages/Plan'
-import PagesProduct from '@/pages/Product'
-import PagesServices from '@/pages/Services'
+
 import PagesMyProfile from '@/pages/my/Profile'
-import PagesMyProfileEdit from '@/pages/my/ProfileEdit'
 
 import PagesAuthSignup from '@/pages/auth/Signup'
 import PagesAuthLogin from '@/pages/auth/Login'
@@ -42,36 +50,41 @@ class App extends React.Component {
 
     return (
       <Router>
-        <div>
-          <LayoutsNavbar />
+        <ToastContainer />
 
-          {
-            loaded ? (
-              <Switch>
-                <Route exact path="/" component={PagesHome} />
+        <LayoutsNavbar />
 
-                <PrivateRoute exact path="/my/profile" component={PagesMyProfile} />
-                <PrivateRoute exact path="/my/profile/edit" component={PagesMyProfileEdit} />
-                <PrivateRoute exact path="/my/requests" component={PagesMyRequests} />
+        {
+          loaded ? (
+            <Switch>
+              <Route exact path="/" component={PagesHome} />
 
-                <Route path="/auth">
-                  <Route exact path="/auth/signup" component={PagesAuthSignup} />
-                  <Route exact path="/auth/login" component={PagesAuthLogin} />
-                </Route>
+              <PrivateRoute exact path="/my/profile" component={PagesMyProfile} />
+              <PrivateRoute exact path="/my/requests" component={PagesMyRequests} />
 
-                <Route exact path="/plans" component={PagesPlan} />
-                <Route exact path="/products" component={PagesProduct} />
-                <Route exact path="/services" component={PagesServices} />
+              <Route path="/auth">
+                <Route exact path="/auth/signup" component={PagesAuthSignup} />
+                <Route exact path="/auth/login" component={PagesAuthLogin} />
+              </Route>
 
-                <Route component={PagesNotFound} />
-              </Switch>
-            ) : (
-              <div className="my-3">
-                <Loading />
-              </div>
-            )
-          }
-        </div>
+              <Route exact path="/plans" component={PagesPlan} />
+              <Route exact path="/services" component={PagesServices} />
+              <Route exact path="/web" component={PageWeb} />
+
+              <Route exact path="/products" component={PagesProduct} />
+              <Route exact path="/product/product1" component={Product1} />
+              <Route exact path="/product/product2" component={Product2} />
+              <Route exact path="/product/product3" component={Product3} />
+              <Route exact path="/product/product4" component={Product4} />
+
+              <Route component={PagesNotFound} />
+            </Switch>
+          ) : (
+            <div className="my-3">
+              <Loading />
+            </div>
+          )
+        }
       </Router>
     )
   }

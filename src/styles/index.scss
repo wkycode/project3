@@ -1,7 +1,15 @@
 @import "~bootstrap/scss/bootstrap";
 
+@import "~react-toastify/scss/main";
+
 @import "@/styles/Home.scss";
 
 @import "@/styles/Navbar.scss";
 
-@import "@/styles/Plan.scss"
+@import "@/styles/Plan.scss";
+
+@import "@/styles/web.scss";
+
+@import "@/styles/Services.scss";
+
+@import "Product.scss"
