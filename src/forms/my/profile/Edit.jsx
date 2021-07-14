@@ -80,11 +80,11 @@ const editSchema = yup.object().shape({
 const FormMyProfileEdit = ({ onSubmit }) => (
   <Formik
     initialValues={{
+      address: '',
+      phone: '',
       currentPassword: '',
       newPassword: '',
-      passwordConfirmation: '',
-      address: '',
-      phone: ''
+      passwordConfirmation: ''
     }}
     validationSchema={editSchema}
     onSubmit={onSubmit}

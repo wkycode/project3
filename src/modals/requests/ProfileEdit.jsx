@@ -12,6 +12,8 @@ const ModalsRequestsProfileEdit = ({ close, onSubmit }) => (
     <Modal.Body>
       <FormMyProfileEdit
         initialValues={{
+          address: '',
+          phone: '',
           password: '',
           confirmPassword: ''
         }}
