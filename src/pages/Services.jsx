@@ -13,9 +13,9 @@ const PageServices = () => (
             </div>
             <div className="data">
               <div className="content">
-                <h1 className="title"><a href="#">Website Development</a></h1>
+                <h1 className="title"><a href="#">Website </a></h1>
                 <p className="text">Development and Renovation Responsive Websites, Tailor-made Backend System, Corporate Website, …</p>
-                <a href="/web" className="button">Read more</a>
+                <a href="/web" className="button1">Read more</a>
               </div>
             </div>
           </div>
@@ -33,7 +33,7 @@ const PageServices = () => (
               <div className="content">
                 <h1 className="title"><a href="#">Mobile App</a></h1>
                 <p className="text">Design & Development iOS and Android, Native, HTML and Hybrid, Server side integration, Backend system, …</p>
-                <a href="/web" className="button">Read more</a>
+                <a href="/web" className="button1">Read more</a>
               </div>
             </div>
           </div>
@@ -51,7 +51,7 @@ const PageServices = () => (
               <div className="content">
                 <h1 className="title"><a href="#">Facebook App</a></h1>
                 <p className="text">Fanpage campaign promotion New product launch, brand awareness, promotional events, …</p>
-                <a href="/web" className="button">Read more</a>
+                <a href="/web" className="button1">Read more</a>
               </div>
             </div>
           </div>
@@ -69,7 +69,7 @@ const PageServices = () => (
               <div className="content">
                 <h1 className="title"><a href="#">eDM</a></h1>
                 <p className="text">Production, Sending & Engagement Reporting Featured articles, Corporate news, New product information, …</p>
-                <a href="/web" className="button">Read more</a>
+                <a href="/web" className="button1">Read more</a>
               </div>
             </div>
           </div>
@@ -87,7 +87,7 @@ const PageServices = () => (
               <div className="content">
                 <h1 className="title"><a href="#">IT Solution</a></h1>
                 <p className="text">Design, Implementation & Integration Hardware and Software, Client, Server and Database, Multiple Systems Integration, …</p>
-                <a href="/web" className="button">Read more</a>
+                <a href="/web" className="button1">Read more</a>
               </div>
             </div>
           </div>
@@ -105,7 +105,7 @@ const PageServices = () => (
               <div className="content">
                 <h1 className="title"><a href="#">IT Maintenance</a></h1>
                 <p className="text">Office Computer & Server Maintenance Taking care of your computers, network, equipments, servers, backups, updates, …</p>
-                <a href="/web" className="button">Read more</a>
+                <a href="/web" className="button1">Read more</a>
               </div>
             </div>
           </div>

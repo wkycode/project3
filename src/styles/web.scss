@@ -1,23 +1,19 @@
 $accent-color: #355cc9;
+.title{
+	margin-top: 5rem;
+	font-weight: bold;
+	text-align: center;
+	color:#131313;
+	letter-spacing: .15em;
 
-// * {
-// 	box-sizing: border-box;
-// }
-
-// body {
-// 	margin: 0;
-// 	display: flex;
-// 	flex-direction: column;
-// 	align-items: center;
-// 	justify-content: center;
-// 	height: 100vh;
-// 	font-family: 'Montserrat', sans-serif;
-// }
-.wrapper {
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: center;
 }
+
+	.subtitle {
+		font-weight: lighter;
+		text-align: center;
+		letter-spacing: .15em;
+	}
+
 
 .wcard {
 	width: 420px;
@@ -35,7 +31,6 @@ $accent-color: #355cc9;
 
 .more {
 	display: none;
-
 	&:checked ~ .content {
 		transform: rotateY(180deg);
 	}
