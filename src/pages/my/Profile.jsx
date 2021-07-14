@@ -3,7 +3,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { ListGroup, Card, Image } from 'react-bootstrap'
+import { ListGroup, Card, Image, Table } from 'react-bootstrap'
 import qs from 'query-string'
 
 import { getRequests } from '@/actions/requests'
@@ -52,23 +52,33 @@ class PagesMyProfile extends React.Component {
 
     return (
       <div>
-        <Image
-          width={300}
-          height={300}
-          src={currentUser.avatar}
-          roundedCircle
-        />
-        <div>Username: {currentUser.username}</div>
-        <div>Email: {currentUser.email}</div>
+        <div className="container">
+          <div className="profile">
+            <div className="profile-image">
+              <Image
+                width={200}
+                height={200}
+                src={currentUser.avatar}
+                roundedCircle
+              />
+            </div>
+            <div className="profile-user-settings">
 
-        <button
-          className="btn btn-success mb-3"
-          type="button"
-          onClick={() => {
-            this.openModalsRequestsEdit(currentUser)
-          }}
-        >Edit</button>
+              <div className="profile-user-name">{currentUser.username}
+                <button
+                  className="btn profile-edit-btn"
+                  type="button"
+                  onClick={() => {
+                    this.openModalsRequestsEdit(currentUser)
+                  }}
+                >Edit</button>
+              </div>
+              <div className="profile-user-email">{currentUser.email} </div>
+            </div>
+          </div>
+        </div>
       </div>
+
     )
   }
 
@@ -77,19 +87,42 @@ class PagesMyProfile extends React.Component {
 
     return (
       <div className="flex-grow-1">
+        <Table>
+          <thead className=" orderDetail">
+            <tr>
+              <th className=" orderDetail">Title</th>
+              <th className=" orderDetail"> Plan</th>
+              <th className=" orderDetail">Template</th>
+              <th className=" orderDetail">Note</th>
+            </tr>
+          </thead>
+
+        </Table>
         {
           requests.length > 0 ? (
             requests.slice(0, 3).map((item) => (
               <div key={item.id}>
-                <Card style={{ width: '18rem' }}>
-                  <Card.Header>My Order</Card.Header>
+                {/* <Card style={{ width: '18rem' }}>
+                  <div className="order-header">My Order</div>
                   <ListGroup variant="flush">
                     <ListGroup.Item>{item.title}</ListGroup.Item>
                     <ListGroup.Item>{item.plan}</ListGroup.Item>
                     <ListGroup.Item>{item.template}</ListGroup.Item>
                     <ListGroup.Item>{item.note}</ListGroup.Item>
                   </ListGroup>
-                </Card>
+                </Card> */}
+                <Table responsive="sm">
+
+                  <tbody className="orderItem">
+                    <tr>
+                      <td className=" orderDetail">{item.title}</td>
+                      <td className=" orderDetail">{item.plan}</td>
+                      <td className=" orderDetail">{item.template}</td>
+                      <td className=" orderDetail">{item.note}</td>
+                    </tr>
+                  </tbody>
+                </Table>
+
               </div>
             ))
           ) : <h2>No Requests</h2>
@@ -103,8 +136,8 @@ class PagesMyProfile extends React.Component {
 
     return (
       <div id="pages-my-profile" className="container my-3">
-        <div className="d-flex">
-          {this.renderProfile()}
+        {this.renderProfile()}
+        <div className="Request">
           {this.renderRequest()}
         </div>
 
