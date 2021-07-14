@@ -12,7 +12,7 @@ const PageProducts = () => (
               <div className="slogan">WC Digital  is the thought lab specializes in creative Website , expansive thinking, and brainstorming.  We specializes in planning and
                 website  design and development coordination for innovative projects around the world.</div>
             </div>
-            <a href="#projects" className="arrow"><div className="ar" />
+            <a href="/web" className="arrow"><div className="ar" />
             </a>
           </div>
 

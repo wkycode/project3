@@ -84,7 +84,8 @@ class PagesMyProfile extends React.Component {
                 <Card style={{ width: '18rem' }}>
                   <Card.Header>My Order</Card.Header>
                   <ListGroup variant="flush">
-                    <ListGroup.Item>{item.id}</ListGroup.Item>
+                    <ListGroup.Item>{item.title}</ListGroup.Item>
+                    <ListGroup.Item>{item.plan}</ListGroup.Item>
                     <ListGroup.Item>{item.template}</ListGroup.Item>
                     <ListGroup.Item>{item.note}</ListGroup.Item>
                   </ListGroup>
