@@ -6,10 +6,10 @@ import { ToastContainer } from 'react-toastify'
 
 import LayoutsNavbar from '@/layouts/Navbar'
 import PrivateRoute from '@/components/PrivateRoute'
+import AuthRoute from '@/components/AuthRoute'
 import Loading from '@/components/Loading'
 
 import PagesServices from '@/pages/Services'
-import PageWeb from '@/pages/web'
 
 import PagesProduct from '@/pages/Product'
 import Product1 from '@/pages/product/product1'
@@ -62,13 +62,12 @@ class App extends React.Component {
               <PrivateRoute exact path="/my/requests" component={PagesMyRequests} />
 
               <Route path="/auth">
-                <Route exact path="/auth/signup" component={PagesAuthSignup} />
-                <Route exact path="/auth/login" component={PagesAuthLogin} />
+                <AuthRoute exact path="/auth/signup" component={PagesAuthSignup} />
+                <AuthRoute exact path="/auth/login" component={PagesAuthLogin} />
               </Route>
 
               <Route exact path="/plans" component={PagesPlan} />
               <Route exact path="/services" component={PagesServices} />
-              <Route exact path="/web" component={PageWeb} />
 
               <Route exact path="/products" component={PagesProduct} />
               <Route exact path="/product/product1" component={Product1} />

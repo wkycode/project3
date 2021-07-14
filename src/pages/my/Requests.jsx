@@ -110,7 +110,7 @@ class PagesMyRequests extends React.Component {
             </div>
 
             <div className="tbl-content" ref={this.tblContent}>
-              <table cellPadding="0" cellSpacing="0" border="0" ref={this.tblContentTable}>
+              <table className="table-hover" cellPadding="0" cellSpacing="0" border="0" ref={this.tblContentTable}>
                 <tbody>
                   {
                     requests.map((item) => (

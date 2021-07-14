@@ -5,9 +5,9 @@ import Modal from 'react-bootstrap/Modal'
 import FormsRequestsCreate from '@/forms/requests/Create'
 
 const ModalsRequestsEdit = ({ close, onSubmit, request }) => (
-  <Modal show onHide={close}>
-    <Modal.Header closeButton>
-      <Modal.Title>Edit Request{request.id}</Modal.Title>
+  <Modal className="reveal-modal" show onHide={close}>
+    <Modal.Header className="modal-title" closeButton>
+      <Modal.Title>Edit - {request.title}</Modal.Title>
     </Modal.Header>
     <Modal.Body>
       <FormsRequestsCreate

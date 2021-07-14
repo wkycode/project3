@@ -49,8 +49,8 @@ class PagesPlan extends React.Component {
         <div id="pages-plan">
           <div className="background d-flex justify-content-center align-items-center">
             <header className="pricing-header p-3 pb-md-4 mx-auto text-center">
-              <h1>Pricing</h1>
-              <p className="text-muted">No bullshit, Let&apos;s go</p>
+              <div className="plan-title">Quality Service With Fair Pricing</div>
+              <p className="plan-quote text-muted">Price is what you pay Value is what you get</p>
             </header>
           </div>
 

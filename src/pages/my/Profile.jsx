@@ -31,9 +31,11 @@ class PagesMyProfile extends React.Component {
     })
   }
 
-  handleEditSubmit(values) {
+  handleEditSubmit(values, formik) {
     this.props.updateCurrentUser(values).then(() => {
       this.closeModalsRequestsEdit()
+    }).finally(() => {
+      formik.setSubmitting(false)
     })
   }
 
