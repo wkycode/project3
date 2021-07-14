@@ -1,8 +1,8 @@
-
+#pages-product{
 :root{
-    --main-grey-color: #616161;
+    // --main-grey-color: #616161;
     --main-white: #F5F5F5;
-    --main-light-grey: #9E9E9E;
+    // --main-light-grey: #9E9E9E;
     // --text-color: #212121;
     --secondary-text-color: #757575;
     --special-color: #009688;
@@ -17,9 +17,7 @@
 
     /* main block */
 
-.main {
-    background: #9E9E9E
-}
+
 
     /*HEADER*/
 
@@ -56,10 +54,10 @@
     justify-content: space-between;
     height: 88%;
     position: relative;
-    background-image: url(https://images.fineartamerica.com/images-medium-large/black-and-grey-sunset-carole-martinez.jpg) ;
-    background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #f07654;
+    background-image: linear-gradient(315deg, #f07654 0%, #fcd181 74%);
 }
 
 // .main-img {
@@ -107,9 +105,9 @@
 }
 
 .projects-description {
-    background: url(https://ak6.picdn.net/shutterstock/videos/9228413/thumb/1.jpg);
-	background-position: center;
-    height: 50%;
+    // background: url(https://ak6.picdn.net/shutterstock/videos/9228413/thumb/1.jpg);
+	// background-position: center;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -192,3 +190,4 @@
             transition: transform .3s linear;
         }
 
+    }

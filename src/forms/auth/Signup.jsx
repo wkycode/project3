@@ -1,72 +1,78 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
+import bsCustomFileInput from 'bs-custom-file-input'
 import * as yup from 'yup'
 
-const RenderForm = ({ errors, touched, isSubmitting, setFieldValue }) => (
-  <Form>
-    <div className="form-group">
-      <label htmlFor="username">username</label>
-      <Field
-        id="username"
-        className={`form-control ${(errors.username && touched.username ? ' is-invalid' : '')}`}
-        name="username"
-        type="username"
-      />
-      <ErrorMessage component="div" className="invalid-feedback" name="username" />
-    </div>
-    <div className="form-group">
-      <label htmlFor="email">Email</label>
-      <Field
-        id="email"
-        className={`form-control ${(errors.email && touched.email ? ' is-invalid' : '')}`}
-        name="email"
-        type="email"
-      />
-      <ErrorMessage component="div" className="invalid-feedback" name="email" />
-    </div>
+const RenderForm = ({ errors, touched, isSubmitting, setFieldValue }) => {
+  useEffect(() => {
+    bsCustomFileInput.init()
+  })
 
-    <div className="form-group">
-      <label htmlFor="password">Password</label>
-      <Field
-        id="password"
-        className={`form-control ${(errors.password && touched.password ? ' is-invalid' : '')}`}
-        name="password"
-        type="password"
-      />
-      <ErrorMessage component="div" className="invalid-feedback" name="password" />
-    </div>
-
-    <div className="form-group">
-      <label htmlFor="passwordConfirmation">Confirmation</label>
-      <Field
-        id="passwordConfirmation"
-        className={`form-control ${(errors.passwordConfirmation && touched.passwordConfirmation ? ' is-invalid' : '')}`}
-        name="passwordConfirmation"
-        type="password"
-      />
-      <ErrorMessage component="div" className="invalid-feedback" name="passwordConfirmation" />
-    </div>
-
-    <div className="form-group">
-      <label>Avatar</label>
-      <div className={`custom-file ${(errors.avatar && touched.avatar ? ' is-invalid' : '')}`}>
-        <input
-          id="avatar"
-          className={`custom-file-input ${(errors.avatar && touched.avatar ? ' is-invalid' : '')}`}
-          name="avatar"
-          type="file"
-          aria-describedby="custom-file-label"
-          onChange={(event) => { setFieldValue('avatar', event.currentTarget.files[0]) }}
+  return (
+    <Form>
+      <div className="form-group">
+        <label htmlFor="username">username</label>
+        <Field
+          id="username"
+          className={`form-control ${(errors.username && touched.username ? ' is-invalid' : '')}`}
+          name="username"
+          type="username"
         />
-        <label className="custom-file-label" htmlFor="avatar">Upload Image</label>
+        <ErrorMessage component="div" className="invalid-feedback" name="username" />
       </div>
-      <ErrorMessage component="div" className="invalid-feedback" name="avatar" />
-    </div>
+      <div className="form-group">
+        <label htmlFor="email">Email</label>
+        <Field
+          id="email"
+          className={`form-control ${(errors.email && touched.email ? ' is-invalid' : '')}`}
+          name="email"
+          type="email"
+        />
+        <ErrorMessage component="div" className="invalid-feedback" name="email" />
+      </div>
 
-    <button className="btn btn-success" type="submit" disabled={isSubmitting}>Submit</button>
-  </Form>
-)
+      <div className="form-group">
+        <label htmlFor="password">Password</label>
+        <Field
+          id="password"
+          className={`form-control ${(errors.password && touched.password ? ' is-invalid' : '')}`}
+          name="password"
+          type="password"
+        />
+        <ErrorMessage component="div" className="invalid-feedback" name="password" />
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="passwordConfirmation">Confirmation</label>
+        <Field
+          id="passwordConfirmation"
+          className={`form-control ${(errors.passwordConfirmation && touched.passwordConfirmation ? ' is-invalid' : '')}`}
+          name="passwordConfirmation"
+          type="password"
+        />
+        <ErrorMessage component="div" className="invalid-feedback" name="passwordConfirmation" />
+      </div>
+
+      <div className="form-group">
+        <label>Avatar</label>
+        <div className={`custom-file ${(errors.avatar && touched.avatar ? ' is-invalid' : '')}`}>
+          <input
+            id="avatar"
+            className={`custom-file-input ${(errors.avatar && touched.avatar ? ' is-invalid' : '')}`}
+            name="avatar"
+            type="file"
+            onChange={(event) => { setFieldValue('avatar', event.currentTarget.files[0]) }}
+          />
+          <label className="custom-file-label" htmlFor="avatar">Upload Image</label>
+        </div>
+        <ErrorMessage component="div" className="invalid-feedback" name="avatar" />
+      </div>
+
+      <button className="btn btn-success" type="submit" disabled={isSubmitting}>Submit</button>
+    </Form>
+  )
+}
 RenderForm.propTypes = {
   errors: PropTypes.shape().isRequired,
   touched: PropTypes.shape().isRequired,

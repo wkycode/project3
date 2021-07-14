@@ -3,7 +3,7 @@ import React from 'react'
 const PageProducts = () => (
   <div id="pages-product" className="container">
 
-    <div className="container main">
+    <div className="container main ">
       <div className="section">
         <div className="main-img">
           <div img src="img/f3fd338b-0d65-42e5-9651-6782870f5d71.png" alt="a">
@@ -12,7 +12,7 @@ const PageProducts = () => (
               <div className="slogan">WC Digital  is the thought lab specializes in creative Website , expansive thinking, and brainstorming.  We specializes in planning and
                 website  design and development coordination for innovative projects around the world.</div>
             </div>
-            <a href="/web" className="arrow"><div className="ar" />
+            <a href="#projects" className="arrow"><div className="ar" />
             </a>
           </div>
 

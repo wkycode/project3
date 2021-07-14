@@ -52,7 +52,7 @@ class PagesMyProfile extends React.Component {
 
     return (
       <div>
-        <div className="container">
+        <div id="page-profile" className="container">
           <div className="profile">
             <div className="profile-image">
               <Image
@@ -89,12 +89,11 @@ class PagesMyProfile extends React.Component {
       <div className="flex-grow-1">
         <Table>
           <thead className=" orderDetail">
-            <tr>
-              <th className=" orderDetail">Title</th>
-              <th className=" orderDetail"> Plan</th>
-              <th className=" orderDetail">Template</th>
-              <th className=" orderDetail">Note</th>
-            </tr>
+
+            <th className=" orderDetail">Title</th>
+            <th className=" orderDetail"> Plan</th>
+            <th className=" orderDetail">Template</th>
+            <th className=" orderDetail">Note</th>
           </thead>
 
         </Table>
