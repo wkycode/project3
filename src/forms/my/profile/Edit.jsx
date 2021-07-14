@@ -38,6 +38,24 @@ const RenderForm = ({ errors, touched, isSubmitting }) => (
       <ErrorMessage component="div" className="invalid-feedback" name="passwordConfirmation" />
     </div>
 
+    <div className="form-group">
+      <label htmlFor="address">Address</label>
+      <Field
+        id="address"
+        name="address"
+        type="text"
+      />
+    </div>
+
+    <div className="form-group">
+      <label htmlFor="phone">Phone</label>
+      <Field
+        id="phone"
+        name="phone"
+        type="number"
+      />
+    </div>
+
     <button className="btn btn-success" type="submit" disabled={isSubmitting}>Submit</button>
   </Form>
 )
@@ -64,7 +82,9 @@ const FormMyProfileEdit = ({ onSubmit }) => (
     initialValues={{
       currentPassword: '',
       newPassword: '',
-      passwordConfirmation: ''
+      passwordConfirmation: '',
+      address: '',
+      phone: ''
     }}
     validationSchema={editSchema}
     onSubmit={onSubmit}

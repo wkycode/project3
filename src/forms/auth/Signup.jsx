@@ -55,6 +55,24 @@ const RenderForm = ({ errors, touched, isSubmitting, setFieldValue }) => {
       </div>
 
       <div className="form-group">
+        <label htmlFor="address">Address</label>
+        <Field
+          id="address"
+          name="address"
+          type="text"
+        />
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="phone">Phone</label>
+        <Field
+          id="phone"
+          name="phone"
+          type="number"
+        />
+      </div>
+
+      <div className="form-group">
         <label>Avatar</label>
         <div className={`custom-file ${(errors.avatar && touched.avatar ? ' is-invalid' : '')}`}>
           <input

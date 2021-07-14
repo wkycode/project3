@@ -74,6 +74,10 @@ class PagesMyProfile extends React.Component {
                 >Edit</button>
               </div>
               <div className="profile-user-email">{currentUser.email} </div>
+              <div className="profile-user-address">{currentUser.address} </div>
+              <div className="profile-user-address">{currentUser.phone} </div>
+
+
             </div>
           </div>
         </div>
