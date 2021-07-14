@@ -14,14 +14,19 @@ class PagesMyRequests extends React.Component {
   constructor(props) {
     super(props)
 
+    this.tblContent = React.createRef()
+    this.tblContentTable = React.createRef()
+
     this.state = {
       showModalsRequestsEdit: false,
-      selectedRequest: null
+      selectedRequest: null,
+      style: {}
     }
     this.handleDeleteClick = this.handleDeleteClick.bind(this)
+    this.handleEditSubmit = this.handleEditSubmit.bind(this)
+    this.setTBLPadding = this.setTBLPadding.bind(this)
     this.openModalsRequestsEdit = this.openModalsRequestsEdit.bind(this)
     this.closeModalsRequestsEdit = this.closeModalsRequestsEdit.bind(this)
-    this.handleEditSubmit = this.handleEditSubmit.bind(this)
   }
 
   componentDidMount() {
@@ -32,6 +37,14 @@ class PagesMyRequests extends React.Component {
         this.setState({ selectedRequest, showModalsRequestsEdit: true })
       }
     })
+
+    window.addEventListener('resize', this.setTBLPadding)
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (!prevState.style.paddingRight && !this.state.style.paddingRight) {
+      this.setTBLPadding()
+    }
   }
 
   componentWillUnmount() {
@@ -51,6 +64,16 @@ class PagesMyRequests extends React.Component {
     })
   }
 
+  setTBLPadding() {
+    if (this.tblContent.current && this.tblContentTable.current) {
+      this.setState({
+        style: {
+          paddingRight: this.tblContent.current.offsetWidth - this.tblContentTable.current.offsetWidth
+        }
+      })
+    }
+  }
+
   openModalsRequestsEdit(selectedRequest) {
     this.setState({ showModalsRequestsEdit: true, selectedRequest })
   }
@@ -60,43 +83,73 @@ class PagesMyRequests extends React.Component {
   }
 
   render() {
-    const { showModalsRequestsEdit, selectedRequest } = this.state
+    const { showModalsRequestsEdit, selectedRequest, style } = this.state
     const { stateRequests: { requests, isGetRequestsLoading, destroyingIDs } } = this.props
 
     if (isGetRequestsLoading) return <Loading />
     if (requests.length === 0) return <h2>No Requests</h2>
     return (
       <div className="list-group">
-        {
-          requests.map((item) => (
-            <>
-              <div className="d-flex flex-column justify-content-center align-items-center" />
-              <div className="btn-group btn-group-sm mt-3">
-                {item.title}
-                <button
-                  className="btn btn-info"
-                  type="button"
-                  onClick={(e) => {
-                    e.preventDefault()
-                    this.openModalsRequestsEdit(item)
-                  }}
-                  disabled={destroyingIDs.includes(item.id)}
-                >Edit</button>
+        <div id="pages-my-request">
 
-                <button
-                  className="btn btn-danger"
-                  type="button"
-                  onClick={(e) => {
-                    e.preventDefault()
-                    this.handleDeleteClick(item.id)
-                  }}
-                  disabled={destroyingIDs.includes(item.id)}
-                >Delete</button>
-              </div>
-            </>
-          ))
-        }
-        {showModalsRequestsEdit && <ModalsRequestsEdit close={this.closeModalsRequestsEdit} onSubmit={this.handleEditSubmit} request={selectedRequest} />}
+          <section>
+            <h1>My Request List</h1>
+            <div className="tbl-header" style={style}>
+              <table cellPadding="0" cellSpacing="0" border="0">
+                <thead>
+                  <tr>
+                    <th>Website Title</th>
+                    <th>Plan</th>
+                    <th>Template</th>
+                    <th>Notes</th>
+                    <th>Edit Item</th>
+                    <th>Delete Item</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+
+            <div className="tbl-content" ref={this.tblContent}>
+              <table cellPadding="0" cellSpacing="0" border="0" ref={this.tblContentTable}>
+                <tbody>
+                  {
+                    requests.map((item) => (
+                      <>
+                        <tr>
+                          <td>{item.title}</td>
+                          <td>{item.plan}</td>
+                          <td>{item.template}</td>
+                          <td>{item.note}</td>
+                          <td>  <button
+                            className="btn btn-outline-light"
+                            type="button"
+                            onClick={(e) => {
+                              e.preventDefault()
+                              this.openModalsRequestsEdit(item)
+                            }}
+                            disabled={destroyingIDs.includes(item.id)}
+                          ><i className="far fa-edit" /></button></td>
+                          <td><button
+                            className="btn btn-outline-light"
+                            type="button"
+                            onClick={(e) => {
+                              e.preventDefault()
+                              this.handleDeleteClick(item.id)
+                            }}
+                            disabled={destroyingIDs.includes(item.id)}
+                          ><i className="far fa-trash-alt" /></button></td>
+                        </tr>
+
+                      </>
+                    ))
+                  }
+                  {showModalsRequestsEdit && <ModalsRequestsEdit close={this.closeModalsRequestsEdit} onSubmit={this.handleEditSubmit} request={selectedRequest} />}
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+        </div>
       </div>
     )
   }
