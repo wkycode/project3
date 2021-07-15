@@ -63,63 +63,67 @@ class PagesMyProfile extends React.Component {
       <div>
         <div id="page-profile" className="container">
           <div className="row">
-            <div className="col-12">
-              <div className="h2">ABC</div>
+            <div className="col">
+              <div className="text-center">
+                <div className="h2">Settings</div>
+              </div>
             </div>
           </div>
+
           <div id="profile-edit" className="container">
             <div className="row">
               <div className="content">
-                <div className="card">
+                <div className="card-info">
                   <div className="card-header">
-                    <p>Information Edit</p>
+                    <div className="d-flex justify-content-between">
+                      <div className="font" p>Information Edit</div>
+
+                      <div className="d-flex flex-row-reverse">
+                        <button
+                          className="btn btn-light"
+                          type="button"
+                          onClick={() => {
+                            this.openModalsRequestsEdit(currentUser)
+                          }}
+                        >Edit
+                        </button>
+                      </div>
+                    </div>
+
                   </div>
                   <div className="card-body">
                     <div className="row">
-                      <div className="col-12 col-md-4 col-lg-3">E-mail </div>
-                      <div className="col-12 col-md-8 col-lg-9">{currentUser.email} </div>
-                      <div className="col-12 col-md-4 col-lg-3">User Name </div>
-                      <div className="col-12 col-md-4 col-lg-9"> {currentUser.username}</div>
-                      <div className="col-12 col-md-4 col-lg-3">Address </div>
-                      <div className="col-12 col-md-4 col-lg-9"> {currentUser.address}</div>
-                      <div className="col-12 col-md-4 col-lg-3">Phone </div>
-                      <div className="col-12 col-md-4 col-lg-9">{currentUser.phone} </div>
-                      <div className="bg-transparent border-0 pt-0 card-footer">
-                        <div className="d-flex flex-row-reverse">
-                          <button
-                            className="btn btn-outline-primary p-2"
-                            type="button"
-                            onClick={() => {
-                              this.openModalsRequestsEdit(currentUser)
-                            }}
-                          >Edit
-                          </button>
-                        </div>
-                      </div>
-
+                      <div className="col-12 col-md-4 col-lg-3 spacing">E-mail </div>
+                      <div className="col-12 col-md-8 col-lg-9 spacing">{currentUser.email} </div>
+                      <div className="col-12 col-md-4 col-lg-3 spacing">User Name </div>
+                      <div className="col-12 col-md-4 col-lg-9 spacing"> {currentUser.username}</div>
+                      <div className="col-12 col-md-4 col-lg-3 spacing">Address </div>
+                      <div className="col-12 col-md-4 col-lg-9 spacing"> {currentUser.address}</div>
+                      <div className="col-12 col-md-4 col-lg-3 spacing">Phone </div>
+                      <div className="col-12 col-md-4 col-lg-9 spacing">{currentUser.phone} </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="card">
+                <div className="card-pw">
                   <div className="card-header">
-                    <p>Password Edit</p>
+                    <div className="d-flex justify-content-between">
+                      <div className="font" p>Password Edit</div>
+                      <div className="d-flex flex-row-reverse">
+                        <button
+                          className="btn btn-light"
+                          type="button"
+                          onClick={() => {
+                            this.openModalsRequestsPasswordEdit(currentUser)
+                          }}
+                        >Edit
+                        </button>
+                      </div>
+                    </div>
                   </div>
                   <div className="card-body">
                     <div className="row">
-                      <div className="col-12 col-md-4 col-lg-3">Password </div>
-                      <div className="bg-transparent border-0 pt-0 card-footer">
-                        <div className="d-flex flex-row-reverse">
-                          <button
-                            className="btn btn-outline-primary p-2"
-                            type="button"
-                            onClick={() => {
-                              this.openModalsRequestsPasswordEdit(currentUser)
-                            }}
-                          >Edit
-                          </button>
-                        </div>
-                      </div>
+                      <div className="col-12 col-md-4 col-lg-3">Password  ******** </div>
 
                     </div>
                   </div>
