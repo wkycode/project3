@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-// import { Image } from 'react-bootstrap'
 import ModalsRequestsProfileEdit from '@/modals/profile/ProfileEdit'
 import ModalsRequestsPasswordEdit from '@/modals/profile/PasswordEdit'
 
@@ -14,7 +13,7 @@ class PagesMyProfile extends React.Component {
     this.state = {
       showModalsRequestsProfileEdit: false,
       showModalsRequestsPasswordEdit: false
-      // selectedRequest: null
+
     }
     this.handleEditSubmit = this.handleEditSubmit.bind(this)
     this.handleUpdatePasswordSubmit = this.handleUpdatePasswordSubmit.bind(this)
@@ -93,14 +92,14 @@ class PagesMyProfile extends React.Component {
                   </div>
                   <div className="card-body">
                     <div className="row">
-                      <div className="col-12 col-md-4 col-lg-3 spacing">E-mail </div>
-                      <div className="col-12 col-md-8 col-lg-9 spacing">{currentUser.email} </div>
-                      <div className="col-12 col-md-4 col-lg-3 spacing">User Name </div>
-                      <div className="col-12 col-md-4 col-lg-9 spacing"> {currentUser.username}</div>
-                      <div className="col-12 col-md-4 col-lg-3 spacing">Address </div>
-                      <div className="col-12 col-md-4 col-lg-9 spacing"> {currentUser.address}</div>
-                      <div className="col-12 col-md-4 col-lg-3 spacing">Phone </div>
-                      <div className="col-12 col-md-4 col-lg-9 spacing">{currentUser.phone} </div>
+                      <div className="title col-12 col-md-4 col-lg-3 spacing">E-mail </div>
+                      <div className=" col-12 col-md-8 col-lg-9 spacing">{currentUser.email} </div>
+                      <div className="title col-12 col-md-4 col-lg-3 spacing">User Name </div>
+                      <div className=" col-12 col-md-4 col-lg-9 spacing"> {currentUser.username}</div>
+                      <div className="title col-12 col-md-4 col-lg-3 spacing">Address </div>
+                      <div className=" col-12 col-md-4 col-lg-9 spacing"> {currentUser.address}</div>
+                      <div className="title col-12 col-md-4 col-lg-3 spacing">Phone </div>
+                      <div className=" col-12 col-md-4 col-lg-9 spacing">{currentUser.phone} </div>
                     </div>
                   </div>
                 </div>
@@ -123,7 +122,7 @@ class PagesMyProfile extends React.Component {
                   </div>
                   <div className="card-body">
                     <div className="row">
-                      <div className="col-12 col-md-4 col-lg-3">Password  ******** </div>
+                      <div className="col-12 col-md-4 ">Password  ******** </div>
 
                     </div>
                   </div>
@@ -131,33 +130,7 @@ class PagesMyProfile extends React.Component {
               </div>
             </div>
           </div>
-
         </div>
-        {/* <div className="profile">
-            <div className="profile-image">
-              <Image
-                width={200}
-                height={200}
-                src={currentUser.avatar}
-                roundedCircle
-              />
-            </div>
-            <div className="profile-user-settings">
-
-              <div className="profile-user-name">{currentUser.username}
-                <button
-                  className="btn profile-edit-btn"
-                  type="button"
-                  onClick={() => {
-                    this.openModalsRequestsEdit(currentUser)
-                  }}
-                >Edit</button>
-              </div>
-              <div className="profile-user-email">{currentUser.email} </div>
-              <div className="profile-user-address">{currentUser.address} </div>
-              <div className="profile-user-address">{currentUser.phone} </div>
-            </div>
-          </div> */}
       </div>
     )
   }

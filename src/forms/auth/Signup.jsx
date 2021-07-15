@@ -4,7 +4,7 @@ import { Formik, Field, Form, ErrorMessage } from 'formik'
 import bsCustomFileInput from 'bs-custom-file-input'
 import * as yup from 'yup'
 
-const RenderForm = ({ errors, touched, isSubmitting, setFieldValue }) => {
+const RenderForm = ({ errors, touched, isSubmitting }) => {
   useEffect(() => {
     bsCustomFileInput.init()
   })
@@ -58,6 +58,7 @@ const RenderForm = ({ errors, touched, isSubmitting, setFieldValue }) => {
         <label htmlFor="address">Address</label>
         <Field
           id="address"
+          className={`form-control ${(errors.username && touched.username ? ' is-invalid' : '')}`}
           name="address"
           type="text"
         />
@@ -67,24 +68,10 @@ const RenderForm = ({ errors, touched, isSubmitting, setFieldValue }) => {
         <label htmlFor="phone">Phone</label>
         <Field
           id="phone"
+          className={`form-control ${(errors.username && touched.username ? ' is-invalid' : '')}`}
           name="phone"
           type="number"
         />
-      </div>
-
-      <div className="form-group">
-        <label>Avatar</label>
-        <div className={`custom-file ${(errors.avatar && touched.avatar ? ' is-invalid' : '')}`}>
-          <input
-            id="avatar"
-            className={`custom-file-input ${(errors.avatar && touched.avatar ? ' is-invalid' : '')}`}
-            name="avatar"
-            type="file"
-            onChange={(event) => { setFieldValue('avatar', event.currentTarget.files[0]) }}
-          />
-          <label className="custom-file-label" htmlFor="avatar">Upload Image</label>
-        </div>
-        <ErrorMessage component="div" className="invalid-feedback" name="avatar" />
       </div>
 
       <button className="btn btn-success" type="submit" disabled={isSubmitting}>Submit</button>
@@ -94,8 +81,7 @@ const RenderForm = ({ errors, touched, isSubmitting, setFieldValue }) => {
 RenderForm.propTypes = {
   errors: PropTypes.shape().isRequired,
   touched: PropTypes.shape().isRequired,
-  isSubmitting: PropTypes.bool.isRequired,
-  setFieldValue: PropTypes.func.isRequired
+  isSubmitting: PropTypes.bool.isRequired
 }
 
 const signupSchema = yup.object().shape({
@@ -117,9 +103,7 @@ const FormsAuthSignup = ({ onSubmit }) => (
       username: '',
       email: '',
       password: '',
-      passwordConfirmation: '',
-      avatar: ''
-
+      passwordConfirmation: ''
     }}
     validationSchema={signupSchema}
     onSubmit={onSubmit}

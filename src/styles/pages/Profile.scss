@@ -1,9 +1,5 @@
 #page-profile{
 
-  // background: -webkit-linear-gradient(left, #fcd181, #f07654);
-  // background: linear-gradient(to right, #fcd181, #f07654);
-  // height:100vh;
-
 section{
   margin: 75px;
 }
@@ -11,7 +7,7 @@ section{
 .container{
     max-width: 800px;
     margin: 0 auto;
-    padding-left: 35px;
+    padding-left: 130px;
 }
 
 .spacing{
@@ -23,7 +19,6 @@ section{
 }
 
 .h2{
-  // margin: 20px;
   line-height: 1.5;
   font-size: 2rem !important;
   font-weight: 600;
@@ -51,6 +46,9 @@ section{
 .card-info{
   box-shadow: 0 4px 20px rgba(0,0,0,.2);
   background-color: white !important;
+}
 
+.title{
+  font-weight: bold;
 }
 }
