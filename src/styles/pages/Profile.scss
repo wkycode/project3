@@ -1,0 +1,54 @@
+#page-profile{
+
+  .container{
+      max-width: 800px;
+      margin: 0 auto;
+      padding-left: 130px;
+  }
+section{
+  margin: 75px;
+}
+
+
+.spacing{
+  padding:10px;
+}
+
+.card{
+  margin-bottom: 20px;
+}
+
+.h2{
+  line-height: 1.5;
+  font-size: 2rem !important;
+  font-weight: 600;
+}
+
+.font{
+  font-size: larger;
+  font-weight: 600;
+  margin-top: 1%;
+}
+
+.row{
+  font-family: New Century Schoolbook, TeX Gyre Schola, serif	;
+}
+.card-header{
+  background-color: white !important;
+  border-bottom: white;
+}
+.card-pw{
+  box-shadow: 0 4px 20px rgba(0,0,0,.2);
+  margin-top: 5%;
+  background-color: white !important;
+}
+
+.card-info{
+  box-shadow: 0 4px 20px rgba(0,0,0,.2);
+  background-color: white !important;
+}
+
+.title{
+  font-weight: bold;
+}
+}

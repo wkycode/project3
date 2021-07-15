@@ -13,9 +13,6 @@ import PagesServices from '@/pages/Services'
 
 import PagesProduct from '@/pages/Product'
 import Product1 from '@/pages/product/product1'
-import Product2 from '@/pages/product/product2'
-import Product3 from '@/pages/product/product3'
-import Product4 from '@/pages/product/product4'
 
 import PagesHome from '@/pages/Home'
 import PagesPlan from '@/pages/Plan'
@@ -27,7 +24,7 @@ import PagesAuthLogin from '@/pages/auth/Login'
 
 import PagesNotFound from '@/pages/NotFound'
 
-import { getCurrentUser } from '@/actions/my/profile'
+import { getMyProfile } from '@/actions/my/profile'
 import PagesMyRequests from '@/pages/my/Requests'
 
 class App extends React.Component {
@@ -40,7 +37,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getCurrentUser().finally(() => {
+    this.props.getMyProfile().finally(() => {
       this.setState({ loaded: true })
     })
   }
@@ -71,9 +68,6 @@ class App extends React.Component {
 
               <Route exact path="/products" component={PagesProduct} />
               <Route exact path="/product/product1" component={Product1} />
-              <Route exact path="/product/product2" component={Product2} />
-              <Route exact path="/product/product3" component={Product3} />
-              <Route exact path="/product/product4" component={Product4} />
 
               <Route component={PagesNotFound} />
             </Switch>
@@ -88,11 +82,11 @@ class App extends React.Component {
   }
 }
 App.propTypes = {
-  getCurrentUser: PropTypes.func.isRequired
+  getMyProfile: PropTypes.func.isRequired
 }
 
 const mapDispatchToProps = {
-  getCurrentUser
+  getMyProfile
 }
 
 export default connect(null, mapDispatchToProps)(App)

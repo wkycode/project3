@@ -29,7 +29,7 @@ class PagesAuthLogin extends React.Component {
   render() {
     return (
       <div id="pages-auth-login" className="container text-center my-3">
-        <h1 className="mb-3">Login</h1>
+        <h1 className="mb-3" placeholder="adam.chan@domain.com">Login</h1>
 
         <div className="row text-left">
           <div className="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">

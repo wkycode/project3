@@ -26,6 +26,18 @@ axios.interceptors.response.use((response) => response, (err) => {
     }))
   }
 
+  if (err.response.status === 404) {
+    toast.error(err.response.data.message, {
+      position: 'bottom-left',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined
+    })
+  }
+
   return Promise.reject(err)
 })
 

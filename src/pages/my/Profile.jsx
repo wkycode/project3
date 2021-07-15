@@ -1,15 +1,10 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/no-unused-state */
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { ListGroup, Card, Image } from 'react-bootstrap'
-import qs from 'query-string'
+import ModalsRequestsProfileEdit from '@/modals/profile/ProfileEdit'
+import ModalsRequestsPasswordEdit from '@/modals/profile/PasswordEdit'
 
-import { getRequests } from '@/actions/requests'
-import ModalsRequestsProfileEdit from '@/modals/requests/ProfileEdit'
-
-import { updateCurrentUser } from '@/actions/my/profile'
+import { updateMyProfile, updatePassword } from '@/actions/my/profile'
 
 class PagesMyProfile extends React.Component {
   constructor(props) {
@@ -17,23 +12,28 @@ class PagesMyProfile extends React.Component {
 
     this.state = {
       showModalsRequestsProfileEdit: false,
-      selectedRequest: null
-    }
-    this.openModalsRequestsEdit = this.openModalsRequestsEdit.bind(this)
-    this.closeModalsRequestsEdit = this.closeModalsRequestsEdit.bind(this)
-    this.handleEditSubmit = this.handleEditSubmit.bind(this)
-  }
+      showModalsRequestsPasswordEdit: false
 
-  componentDidMount() {
-    const { RequestId } = qs.parse(window.location.search)
-    this.props.getRequests().then((resp) => {
-      const selectedRequest = resp.data.requests.find((request) => request.id === Number(RequestId))
-    })
+    }
+    this.handleEditSubmit = this.handleEditSubmit.bind(this)
+    this.handleUpdatePasswordSubmit = this.handleUpdatePasswordSubmit.bind(this)
+    this.openModalsRequestsEdit = this.openModalsRequestsEdit.bind(this)
+    this.openModalsRequestsPasswordEdit = this.openModalsRequestsPasswordEdit.bind(this)
+    this.closeModalsRequestsEdit = this.closeModalsRequestsEdit.bind(this)
+    this.closeModalsRequestsPasswordEdit = this.closeModalsRequestsPasswordEdit.bind(this)
   }
 
   handleEditSubmit(values, formik) {
-    this.props.updateCurrentUser(values).then(() => {
+    this.props.updateMyProfile(values).then(() => {
       this.closeModalsRequestsEdit()
+    }).finally(() => {
+      formik.setSubmitting(false)
+    })
+  }
+
+  handleUpdatePasswordSubmit(values, formik) {
+    this.props.updatePassword(values).then(() => {
+      this.closeModalsRequestsPasswordEdit()
     }).finally(() => {
       formik.setSubmitting(false)
     })
@@ -43,8 +43,16 @@ class PagesMyProfile extends React.Component {
     this.setState({ showModalsRequestsProfileEdit: true })
   }
 
+  openModalsRequestsPasswordEdit() {
+    this.setState({ showModalsRequestsPasswordEdit: true })
+  }
+
   closeModalsRequestsEdit() {
     this.setState({ showModalsRequestsProfileEdit: false })
+  }
+
+  closeModalsRequestsPasswordEdit() {
+    this.setState({ showModalsRequestsPasswordEdit: false })
   }
 
   renderProfile() {
@@ -52,62 +60,90 @@ class PagesMyProfile extends React.Component {
 
     return (
       <div>
-        <Image
-          width={300}
-          height={300}
-          src={currentUser.avatar}
-          roundedCircle
-        />
-        <div>Username: {currentUser.username}</div>
-        <div>Email: {currentUser.email}</div>
-
-        <button
-          className="btn btn-success mb-3"
-          type="button"
-          onClick={() => {
-            this.openModalsRequestsEdit(currentUser)
-          }}
-        >Edit</button>
-      </div>
-    )
-  }
-
-  renderRequest() {
-    const { stateRequests: { requests } } = this.props
-
-    return (
-      <div className="flex-grow-1">
-        {
-          requests.length > 0 ? (
-            requests.slice(0, 3).map((item) => (
-              <div key={item.id}>
-                <Card style={{ width: '18rem' }}>
-                  <Card.Header>My Order</Card.Header>
-                  <ListGroup variant="flush">
-                    <ListGroup.Item>{item.id}</ListGroup.Item>
-                    <ListGroup.Item>{item.template}</ListGroup.Item>
-                    <ListGroup.Item>{item.note}</ListGroup.Item>
-                  </ListGroup>
-                </Card>
+        <div id="page-profile" className="container">
+          <div className="row">
+            <div className="col">
+              <div className="text-center">
+                <div className="h2">Settings</div>
               </div>
-            ))
-          ) : <h2>No Requests</h2>
-        }
+            </div>
+          </div>
+
+          <div id="profile-edit" className="container">
+            <div className="row">
+              <div className="content">
+                <div className="card-info">
+                  <div className="card-header">
+                    <div className="d-flex justify-content-between">
+                      <div className="font" p>Information Edit</div>
+
+                      <div className="d-flex flex-row-reverse">
+                        <button
+                          className="btn btn-light"
+                          type="button"
+                          onClick={() => {
+                            this.openModalsRequestsEdit(currentUser)
+                          }}
+                        >Edit
+                        </button>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div className="card-body">
+                    <div className="row">
+                      <div className="title col-12 col-md-4 col-lg-3 spacing">E-mail </div>
+                      <div className=" col-12 col-md-8 col-lg-9 spacing">{currentUser.email} </div>
+                      <div className="title col-12 col-md-4 col-lg-3 spacing">User Name </div>
+                      <div className=" col-12 col-md-4 col-lg-9 spacing"> {currentUser.username}</div>
+                      <div className="title col-12 col-md-4 col-lg-3 spacing">Address </div>
+                      <div className=" col-12 col-md-4 col-lg-9 spacing"> {currentUser.address}</div>
+                      <div className="title col-12 col-md-4 col-lg-3 spacing">Phone </div>
+                      <div className=" col-12 col-md-4 col-lg-9 spacing">{currentUser.phone} </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="card-pw">
+                  <div className="card-header">
+                    <div className="d-flex justify-content-between">
+                      <div className="font" p>Password Edit</div>
+                      <div className="d-flex flex-row-reverse">
+                        <button
+                          className="btn btn-light"
+                          type="button"
+                          onClick={() => {
+                            this.openModalsRequestsPasswordEdit(currentUser)
+                          }}
+                        >Edit
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="card-body">
+                    <div className="row">
+                      <div className="col-12 col-md-4 ">Password  ******** </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     )
   }
 
   render() {
     const { showModalsRequestsProfileEdit } = this.state
+    const { showModalsRequestsPasswordEdit } = this.state
 
     return (
       <div id="pages-my-profile" className="container my-3">
-        <div className="d-flex">
-          {this.renderProfile()}
-          {this.renderRequest()}
-        </div>
-
+        {this.renderProfile()}
         {showModalsRequestsProfileEdit && <ModalsRequestsProfileEdit close={this.closeModalsRequestsEdit} onSubmit={this.handleEditSubmit} />}
+        {showModalsRequestsPasswordEdit && <ModalsRequestsPasswordEdit close={this.closeModalsRequestsPasswordEdit} onSubmit={this.handleUpdatePasswordSubmit} />}
       </div>
     )
   }
@@ -115,9 +151,9 @@ class PagesMyProfile extends React.Component {
 
 PagesMyProfile.propTypes = {
   stateCurrentUser: PropTypes.shape().isRequired,
-  stateRequests: PropTypes.shape().isRequired,
-  updateCurrentUser: PropTypes.func.isRequired,
-  getRequests: PropTypes.func.isRequired
+  updateMyProfile: PropTypes.func.isRequired,
+  updatePassword: PropTypes.func.isRequired
+
 }
 
 const mapStateToProps = (state) => ({
@@ -126,8 +162,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-  updateCurrentUser,
-  getRequests
+  updateMyProfile,
+  updatePassword
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PagesMyProfile)

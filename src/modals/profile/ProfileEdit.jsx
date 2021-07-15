@@ -7,14 +7,10 @@ import FormMyProfileEdit from '@/forms/my/profile/Edit'
 const ModalsRequestsProfileEdit = ({ close, onSubmit }) => (
   <Modal show onHide={close}>
     <Modal.Header closeButton>
-      <Modal.Title>Edit Password</Modal.Title>
+      <Modal.Title>Edit Information</Modal.Title>
     </Modal.Header>
     <Modal.Body>
       <FormMyProfileEdit
-        initialValues={{
-          password: '',
-          confirmPassword: ''
-        }}
         onSubmit={onSubmit}
       />
     </Modal.Body>
