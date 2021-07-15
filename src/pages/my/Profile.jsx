@@ -59,79 +59,61 @@ class PagesMyProfile extends React.Component {
     const { stateCurrentUser: { currentUser } } = this.props
 
     return (
-      <div>
+      <>
         <div id="page-profile" className="container">
-          <div className="row">
-            <div className="col">
-              <div className="text-center">
-                <div className="h2">Settings</div>
-              </div>
-            </div>
+          <div className="text-center">
+            <div className="h2 mt-4 mb-4">Profile Information</div>
           </div>
 
-          <div id="profile-edit" className="container">
-            <div className="row">
-              <div className="content">
-                <div className="card-info">
-                  <div className="card-header">
-                    <div className="d-flex justify-content-between">
-                      <div className="font" p>Information Edit</div>
+          <div id="profile-edit">
+            <div className="card-info">
+              <div className="card-header d-flex justify-content-between">
+                <div className="font">Information</div>
 
-                      <div className="d-flex flex-row-reverse">
-                        <button
-                          className="btn btn-light"
-                          type="button"
-                          onClick={() => {
-                            this.openModalsRequestsEdit(currentUser)
-                          }}
-                        >Edit
-                        </button>
-                      </div>
-                    </div>
+                <button
+                  className="btn btn-light"
+                  type="button"
+                  onClick={() => {
+                    this.openModalsRequestsEdit(currentUser)
+                  }}
+                >Edit</button>
+              </div>
 
-                  </div>
-                  <div className="card-body">
-                    <div className="row">
-                      <div className="title col-12 col-md-4 col-lg-3 spacing">E-mail </div>
-                      <div className=" col-12 col-md-8 col-lg-9 spacing">{currentUser.email} </div>
-                      <div className="title col-12 col-md-4 col-lg-3 spacing">User Name </div>
-                      <div className=" col-12 col-md-4 col-lg-9 spacing"> {currentUser.username}</div>
-                      <div className="title col-12 col-md-4 col-lg-3 spacing">Address </div>
-                      <div className=" col-12 col-md-4 col-lg-9 spacing"> {currentUser.address}</div>
-                      <div className="title col-12 col-md-4 col-lg-3 spacing">Phone </div>
-                      <div className=" col-12 col-md-4 col-lg-9 spacing">{currentUser.phone} </div>
-                    </div>
-                  </div>
+              <div className="card-body">
+                <div className="row">
+                  <div className="title col-12 col-md-4 col-lg-3 spacing">E-mail </div>
+                  <div className=" col-12 col-md-8 col-lg-9 spacing">{currentUser.email} </div>
+                  <div className="title col-12 col-md-4 col-lg-3 spacing">User Name </div>
+                  <div className=" col-12 col-md-4 col-lg-9 spacing">{currentUser.username}</div>
+                  <div className="title col-12 col-md-4 col-lg-3 spacing">Address </div>
+                  <div className=" col-12 col-md-4 col-lg-9 spacing">{currentUser.address}</div>
+                  <div className="title col-12 col-md-4 col-lg-3 spacing">Phone </div>
+                  <div className=" col-12 col-md-4 col-lg-9 spacing">{currentUser.phone} </div>
                 </div>
+              </div>
+            </div>
 
-                <div className="card-pw">
-                  <div className="card-header">
-                    <div className="d-flex justify-content-between">
-                      <div className="font" p>Password Edit</div>
-                      <div className="d-flex flex-row-reverse">
-                        <button
-                          className="btn btn-light"
-                          type="button"
-                          onClick={() => {
-                            this.openModalsRequestsPasswordEdit(currentUser)
-                          }}
-                        >Edit
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="card-body">
-                    <div className="row">
-                      <div className="col-12 col-md-4 ">Password  ******** </div>
-
-                    </div>
-                  </div>
+            <div className="card-pw">
+              <div className="card-header d-flex justify-content-between">
+                <div className="font" p>Password</div>
+                <button
+                  className="btn btn-light"
+                  type="button"
+                  onClick={() => {
+                    this.openModalsRequestsPasswordEdit(currentUser)
+                  }}
+                >Edit</button>
+              </div>
+              <div className="card-body">
+                <div className="row">
+                  <div className="title col-12 col-md-4 col-lg-3 spacing">Password </div>
+                  <div className=" col-12 col-md-8 col-lg-9 spacing">******** </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </>
     )
   }
 

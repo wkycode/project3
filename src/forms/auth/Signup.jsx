@@ -12,7 +12,7 @@ const RenderForm = ({ errors, touched, isSubmitting }) => {
   return (
     <Form>
       <div className="form-group">
-        <label htmlFor="username">username</label>
+        <label htmlFor="username">Username</label>
         <Field
           id="username"
           className={`form-control ${(errors.username && touched.username ? ' is-invalid' : '')}`}
@@ -73,8 +73,9 @@ const RenderForm = ({ errors, touched, isSubmitting }) => {
           type="number"
         />
       </div>
-
-      <button className="btn btn-success" type="submit" disabled={isSubmitting}>Submit</button>
+      <div className="submit-btn d-flex justify-content-end mr-1">
+        <button className="btn btn-outline-dark" type="submit" disabled={isSubmitting}><i className="fas fa-check" /></button>
+      </div>
     </Form>
   )
 }

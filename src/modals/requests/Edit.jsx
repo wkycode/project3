@@ -6,8 +6,8 @@ import FormsRequestsCreate from '@/forms/requests/Create'
 
 const ModalsRequestsEdit = ({ close, onSubmit, request }) => (
   <Modal className="reveal-modal" show onHide={close}>
-    <Modal.Header className="modal-title" closeButton>
-      <Modal.Title>Edit - {request.title}</Modal.Title>
+    <Modal.Header className="request-modal-title" closeButton>
+      <Modal.Title className="request-modal-header">Edit - {request.title}</Modal.Title>
     </Modal.Header>
     <Modal.Body>
       <FormsRequestsCreate

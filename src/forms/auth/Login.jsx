@@ -27,8 +27,9 @@ const RenderForm = ({ errors, touched, isSubmitting }) => (
       />
       <ErrorMessage component="div" className="invalid-feedback" name="password" />
     </div>
-
-    <button className="btn btn-success" type="submit" disabled={isSubmitting}>Submit</button>
+    <div className="submit-btn d-flex justify-content-end mr-1">
+      <button className="btn btn-outline-dark" type="submit" disabled={isSubmitting}><i className="fas fa-check" /></button>
+    </div>
   </Form>
 )
 RenderForm.propTypes = {

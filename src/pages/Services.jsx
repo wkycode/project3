@@ -5,9 +5,9 @@ const PageServices = () => (
   <>
     <Card className="bg-dark text-white">
       <Card.Img src="https://bbltech.com/wp-content/uploads/2021/01/services.jpg" alt="Card image" />
-      <Card.ImgOverlay>
-        <Card.Title className="title">Our Services</Card.Title>
-        <Card.Text className="subtitle">
+      <Card.ImgOverlay className="d-flex flex-column justify-content-center align-items-center">
+        <Card.Title className="services-title text-center">Our Services</Card.Title>
+        <Card.Text className="services-subtitle text-center text-muted">
           Helping your great idea stands out
         </Card.Text>
       </Card.ImgOverlay>

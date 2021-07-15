@@ -2,7 +2,7 @@ import axios from 'axios'
 import { toast } from 'react-toastify'
 
 axios.interceptors.response.use((response) => response, (err) => {
-  if (err.response.status === 401) {
+  if (!err.response.config.hide401Error && err.response.status === 401) {
     toast.error(err.response.data.message, {
       position: 'bottom-left',
       autoClose: 5000,

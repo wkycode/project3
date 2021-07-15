@@ -14,8 +14,39 @@ $accent-color: #355cc9;
 	text-align: center;
 	color:#131313;
 	letter-spacing: .15em;
+}
+
+.services-title{
+	font-weight: 700;
+	font-size: 4rem;
+	text-align: center;
+}
+
+.services-subtitle{
+	font-weight: 600;
+	font-size: 1.25rem;
+	text-align: center;
+}
 
 
+@media only screen and (max-width: 720px) {
+	.services-title {
+		font-size: 3.55rem;
+	}  
+
+	.services-subtitle{
+		font-size: 1.1rem;
+	} 
+}
+
+@media only screen and (max-width: 540px) {
+	.services-title {
+		font-size: 2.5rem;
+	}  
+
+	.services-subtitle{
+		font-size: 0.9rem;
+	} 
 }
 
 	.web-subtitle {

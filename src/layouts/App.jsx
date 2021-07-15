@@ -12,7 +12,6 @@ import Loading from '@/components/Loading'
 import PagesServices from '@/pages/Services'
 
 import PagesProduct from '@/pages/Product'
-import Product1 from '@/pages/product/product1'
 
 import PagesHome from '@/pages/Home'
 import PagesPlan from '@/pages/Plan'
@@ -37,7 +36,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getMyProfile().finally(() => {
+    this.props.getMyProfile({ hide401Error: true }).finally(() => {
       this.setState({ loaded: true })
     })
   }
@@ -67,7 +66,6 @@ class App extends React.Component {
               <Route exact path="/services" component={PagesServices} />
 
               <Route exact path="/products" component={PagesProduct} />
-              <Route exact path="/product/product1" component={Product1} />
 
               <Route component={PagesNotFound} />
             </Switch>
