@@ -24,7 +24,7 @@ import PagesAuthLogin from '@/pages/auth/Login'
 
 import PagesNotFound from '@/pages/NotFound'
 
-import { getCurrentUser } from '@/actions/my/profile'
+import { getMyProfile } from '@/actions/my/profile'
 import PagesMyRequests from '@/pages/my/Requests'
 
 class App extends React.Component {
@@ -37,7 +37,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getCurrentUser().finally(() => {
+    this.props.getMyProfile().finally(() => {
       this.setState({ loaded: true })
     })
   }
@@ -82,11 +82,11 @@ class App extends React.Component {
   }
 }
 App.propTypes = {
-  getCurrentUser: PropTypes.func.isRequired
+  getMyProfile: PropTypes.func.isRequired
 }
 
 const mapDispatchToProps = {
-  getCurrentUser
+  getMyProfile
 }
 
 export default connect(null, mapDispatchToProps)(App)

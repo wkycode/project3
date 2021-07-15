@@ -2,58 +2,30 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import * as yup from 'yup'
+import { connect } from 'react-redux'
 
 const RenderForm = ({ errors, touched, isSubmitting }) => (
   <Form>
     <div className="form-group">
-      <label htmlFor="currentPassword">Current Password</label>
-      <Field
-        id="currentPassword"
-        className={`form - control ${(errors.currentPassword && touched.currentPassword ? ' is-invalid' : '')}`}
-        name="currentPassword"
-        type="password"
-      />
-      <ErrorMessage component="div" className="invalid-feedback" name="currentPassword" />
-    </div>
-
-    <div className="form-group">
-      <label htmlFor="newPassword">New Password</label>
-      <Field
-        id="newPassword"
-        className={`form - control ${(errors.newPassword && touched.newPassword ? ' is-invalid' : '')}`}
-        name="newPassword"
-        type="password"
-      />
-      <ErrorMessage component="div" className="invalid-feedback" name="newPassword" />
-    </div>
-
-    <div className="form-group">
-      <label htmlFor="passwordConfirmation">Confirmation</label>
-      <Field
-        id="passwordConfirmation"
-        className={`form - control ${(errors.passwordConfirmation && touched.passwordConfirmation ? ' is-invalid' : '')}`}
-        name="passwordConfirmation"
-        type="password"
-      />
-      <ErrorMessage component="div" className="invalid-feedback" name="passwordConfirmation" />
-    </div>
-
-    <div className="form-group">
       <label htmlFor="address">Address</label>
       <Field
         id="address"
+        className={`form-control ${(errors.address && touched.address ? ' is-invalid' : '')}`}
         name="address"
         type="text"
       />
+      <ErrorMessage component="div" className="invalid-feedback" name="address" />
     </div>
 
     <div className="form-group">
       <label htmlFor="phone">Phone</label>
       <Field
         id="phone"
+        className={`form-control ${(errors.phone && touched.phone ? ' is-invalid' : '')}`}
         name="phone"
         type="number"
       />
+      <ErrorMessage component="div" className="invalid-feedback" name="phone" />
     </div>
 
     <button className="btn btn-success" type="submit" disabled={isSubmitting}>Submit</button>
@@ -66,33 +38,25 @@ RenderForm.propTypes = {
 }
 
 const editSchema = yup.object().shape({
-  currentPassword: yup.string().required('Required'),
-  newPassword: yup.string().min(6).required('Required'),
-  passwordConfirmation: yup.string().when('newPassword', {
-    is: (val) => (!!(val && val.length > 0)),
-    then: yup.string().oneOf(
-      [yup.ref('newPassword')],
-      'Both password need to be the same'
-    )
-  })
+  address: yup.string(),
+  phone: yup.number()
 })
 
-const FormMyProfileEdit = ({ onSubmit }) => (
+const FormMyProfileEdit = ({ onSubmit, currentUser }) => (
   <Formik
-    initialValues={{
-      address: '',
-      phone: '',
-      currentPassword: '',
-      newPassword: '',
-      passwordConfirmation: ''
-    }}
+    initialValues={currentUser}
     validationSchema={editSchema}
     onSubmit={onSubmit}
     component={RenderForm}
   />
 )
 FormMyProfileEdit.propTypes = {
-  onSubmit: PropTypes.func.isRequired
+  onSubmit: PropTypes.func.isRequired,
+  currentUser: PropTypes.shape().isRequired
 }
 
-export default FormMyProfileEdit
+const mapStateToProps = (state) => ({
+  currentUser: state.currentUser.currentUser
+})
+
+export default connect(mapStateToProps)(FormMyProfileEdit)
