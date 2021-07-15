@@ -87,7 +87,15 @@ class PagesMyRequests extends React.Component {
     const { stateRequests: { requests, isGetRequestsLoading, destroyingIDs } } = this.props
 
     if (isGetRequestsLoading) return <Loading />
-    if (requests.length === 0) return <h2>No Requests</h2>
+    if (requests.length === 0) {
+      return (
+        <div id="pages-my-request">
+          <div className="d-flex justify-content-center align-items-center vh-100">
+            <div className="no-request">No Requests</div>
+          </div>
+        </div>
+      )
+    }
     return (
       <div className="list-group">
         <div id="pages-my-request">

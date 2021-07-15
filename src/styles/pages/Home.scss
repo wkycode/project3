@@ -60,26 +60,21 @@
           .large {
             font-size: 3.5rem;
           }  
-        }
 
-        @media only screen and (max-width: 540px) {
-          .large {
-            font-size: 3rem;
-          }  
-        }
-
-        @media only screen and (max-width: 720px) {
           .medium {
             font-size: 0.775rem;
           }  
         }
 
         @media only screen and (max-width: 540px) {
+          .large {
+            font-size: 3rem;
+          }  
+
           .medium {
             font-size: 0.755rem;
           }  
         }
-
       }
     }
 
