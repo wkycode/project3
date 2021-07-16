@@ -5,7 +5,7 @@ import Modal from 'react-bootstrap/Modal'
 import FormMyProfilePasswordEdit from '@/forms/my/profile/PasswordEdit'
 
 const ModalsRequestsPasswordEdit = ({ close, onSubmit }) => (
-  <Modal show onHide={close}>
+  <Modal className="passwordmodal" show onHide={close}>
     <Modal.Header closeButton>
       <Modal.Title>Edit Password</Modal.Title>
     </Modal.Header>

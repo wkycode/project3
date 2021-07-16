@@ -122,7 +122,7 @@ class PagesMyProfile extends React.Component {
                   </div>
                   <div className="card-body">
                     <div className="row">
-                      <div className="col-12 col-md-4 ">Password  ******** </div>
+                      <div className="col-12 col-md-4 lg-3">Password  ******** </div>
 
                     </div>
                   </div>

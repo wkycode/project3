@@ -5,7 +5,7 @@ import Modal from 'react-bootstrap/Modal'
 import FormMyProfileEdit from '@/forms/my/profile/Edit'
 
 const ModalsRequestsProfileEdit = ({ close, onSubmit }) => (
-  <Modal show onHide={close}>
+  <Modal className="profile-edit-modal" show onHide={close}>
     <Modal.Header closeButton>
       <Modal.Title>Edit Information</Modal.Title>
     </Modal.Header>

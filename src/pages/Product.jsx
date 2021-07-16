@@ -25,7 +25,7 @@ const PageProducts = () => (
           <div className="untitled__slideBg">
             <div className="untitled__slideContent">
               <span>Project 3</span>
-              <a className="button" href="/product/product1" target="/black">View More Detail</a>
+              <a className="button btn-dark" href="/product/product1" target="/black">View More Detail</a>
             </div>
           </div>
         </div>
