@@ -6,8 +6,8 @@ import FormMyProfileEdit from '@/forms/my/profile/Edit'
 
 const ModalsRequestsProfileEdit = ({ close, onSubmit }) => (
   <Modal show onHide={close} centered>
-    <Modal.Header closeButton>
-      <Modal.Title>Edit Information</Modal.Title>
+    <Modal.Header className="profile-edit-header" closeButton>
+      <Modal.Title className="profile-edit-title">Edit Information</Modal.Title>
     </Modal.Header>
     <Modal.Body>
       <FormMyProfileEdit

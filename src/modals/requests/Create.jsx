@@ -6,8 +6,8 @@ import FormsRequestsCreate from '@/forms/requests/Create'
 
 const ModalsRequestsCreate = ({ close, onSubmit, selectedPlan }) => (
   <Modal className="reveal-modal" show onHide={close} centered>
-    <Modal.Header className="request-modal-title" closeButton>
-      <Modal.Title className="request-modal-header"> We will get back to you in 24H</Modal.Title>
+    <Modal.Header className="request-modal-header" closeButton>
+      <Modal.Title className="request-modal-title"> We will get back to you in 24H</Modal.Title>
     </Modal.Header>
     <Modal.Body>
       <FormsRequestsCreate

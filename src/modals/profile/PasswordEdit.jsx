@@ -6,8 +6,8 @@ import FormMyProfilePasswordEdit from '@/forms/my/profile/PasswordEdit'
 
 const ModalsRequestsPasswordEdit = ({ close, onSubmit }) => (
   <Modal show onHide={close} centered>
-    <Modal.Header closeButton>
-      <Modal.Title>Edit Password</Modal.Title>
+    <Modal.Header className="profile-edit-header" closeButton>
+      <Modal.Title className="profile-edit-title">Edit Password</Modal.Title>
     </Modal.Header>
     <Modal.Body>
       <FormMyProfilePasswordEdit
