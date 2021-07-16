@@ -122,33 +122,30 @@ class PagesMyRequests extends React.Component {
                 <tbody>
                   {
                     requests.map((item) => (
-                      <>
-                        <tr>
-                          <td>{item.title}</td>
-                          <td>{item.plan}</td>
-                          <td>{item.template}</td>
-                          <td>{item.note}</td>
-                          <td>  <button
-                            className="btn btn-outline-light"
-                            type="button"
-                            onClick={(e) => {
-                              e.preventDefault()
-                              this.openModalsRequestsEdit(item)
-                            }}
-                            disabled={destroyingIDs.includes(item.id)}
-                          ><i className="far fa-edit" /></button></td>
-                          <td><button
-                            className="btn btn-outline-light"
-                            type="button"
-                            onClick={(e) => {
-                              e.preventDefault()
-                              this.handleDeleteClick(item.id)
-                            }}
-                            disabled={destroyingIDs.includes(item.id)}
-                          ><i className="far fa-trash-alt" /></button></td>
-                        </tr>
-
-                      </>
+                      <tr key={item.id}>
+                        <td>{item.title}</td>
+                        <td>{item.plan}</td>
+                        <td>{item.template}</td>
+                        <td>{item.note}</td>
+                        <td>  <button
+                          className="btn btn-outline-light"
+                          type="button"
+                          onClick={(e) => {
+                            e.preventDefault()
+                            this.openModalsRequestsEdit(item)
+                          }}
+                          disabled={destroyingIDs.includes(item.id)}
+                        ><i className="far fa-edit" /></button></td>
+                        <td><button
+                          className="btn btn-outline-light"
+                          type="button"
+                          onClick={(e) => {
+                            e.preventDefault()
+                            this.handleDeleteClick(item.id)
+                          }}
+                          disabled={destroyingIDs.includes(item.id)}
+                        ><i className="far fa-trash-alt" /></button></td>
+                      </tr>
                     ))
                   }
                   {showModalsRequestsEdit && <ModalsRequestsEdit close={this.closeModalsRequestsEdit} onSubmit={this.handleEditSubmit} request={selectedRequest} />}

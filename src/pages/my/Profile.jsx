@@ -95,7 +95,7 @@ class PagesMyProfile extends React.Component {
 
             <div className="card-pw">
               <div className="card-header d-flex justify-content-between">
-                <div className="font" p>Password</div>
+                <div className="font">Password</div>
                 <button
                   className="btn btn-light"
                   type="button"
