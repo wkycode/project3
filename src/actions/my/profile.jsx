@@ -9,7 +9,7 @@ export const unsetCurrentUser = () => ({ type: UNSET_CURRENT_USER })
 export const getMyProfile = (config = {}) => (dispatch) => new Promise((resolve, reject) => {
   axios({
     method: 'GET',
-    url: 'http://localhost:3000/api/my/profile',
+    url: `${process.env.API_DOMAIN}/api/my/profile`,
     withCredentials: true,
     hide401Error: config.hide401Error
   }).then((resp) => {
@@ -24,7 +24,7 @@ export const getMyProfile = (config = {}) => (dispatch) => new Promise((resolve,
 export const updateMyProfile = (values) => (dispatch) => new Promise((resolve, reject) => {
   axios({
     method: 'PUT',
-    url: 'http://localhost:3000/api/my/profile',
+    url: `${process.env.API_DOMAIN}/api/my/profile`,
     data: values,
     withCredentials: true
   }).then((resp) => {
@@ -38,7 +38,7 @@ export const updateMyProfile = (values) => (dispatch) => new Promise((resolve, r
 export const updatePassword = (values) => (dispatch) => new Promise((resolve, reject) => {
   axios({
     method: 'PUT',
-    url: 'http://localhost:3000/api/my/profile/password',
+    url: `${process.env.API_DOMAIN}/api/my/profile/password`,
     data: values,
     withCredentials: true
   }).then((resp) => {

@@ -24,7 +24,7 @@ export const getRequests = () => (dispatch) => new Promise((resolve, reject) => 
   dispatch(loading(GET_REQUESTS, { loading: true }))
   axios({
     method: 'GET',
-    url: 'http://localhost:3000/api/my/requests',
+    url: `${process.env.API_DOMAIN}/api/my/requests`,
     withCredentials: true
   }).then((resp) => {
     dispatch(setRequests(resp.data))
@@ -41,7 +41,7 @@ export const createRequest = (values) => (dispatch) => new Promise((resolve, rej
   dispatch(loading(CREATE_REQUEST, { loading: true }))
   axios({
     method: 'POST',
-    url: 'http://localhost:3000/api/my/requests',
+    url: `${process.env.API_DOMAIN}/api/my/requests`,
     data: values,
     withCredentials: true
   }).then((resp) => {
@@ -58,7 +58,7 @@ export const getRequest = (RequestId) => (dispatch) => {
   dispatch(loading(GET_REQUEST, { loading: true }))
   axios({
     method: 'GET',
-    url: `http://localhost:3000/api/my/requests/${RequestId}`,
+    url: `${process.env.API_DOMAIN}/api/my/requests/${RequestId}`,
     withCredentials: true
   }).then((resp) => {
     dispatch(setRequest(resp.data))
@@ -74,7 +74,7 @@ export const updateRequest = (values, RequestId) => (dispatch) => new Promise((r
   dispatch(loading(UPDATE_REQUEST, { loading: true }))
   axios({
     method: 'PUT',
-    url: `http://localhost:3000/api/my/requests/${RequestId}`,
+    url: `${process.env.API_DOMAIN}/api/my/requests/${RequestId}`,
     data: values,
     withCredentials: true
   }).then((resp) => {
@@ -92,7 +92,7 @@ export const destroyRequest = (RequestId) => (dispatch) => new Promise((resolve,
   dispatch(loading(DESTROY_REQUEST, { loading: true, id: RequestId }))
   axios({
     method: 'DELETE',
-    url: `http://localhost:3000/api/my/requests/${RequestId}`,
+    url: `${process.env.API_DOMAIN}/api/my/requests/${RequestId}`,
     withCredentials: true
   }).then((resp) => {
     dispatch(removeRequestInRequests(RequestId))
