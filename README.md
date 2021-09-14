@@ -35,3 +35,11 @@
 ![Image7](https://i.imgur.com/hjeavWN.png?1)
 ![Image8](https://i.imgur.com/jX66VJS.png?1)
 ![Image9](https://i.imgur.com/FvYFb6U.png?1)
+
+---
+## Tidio
+
+### A third party chat service that allows customer directly sending requests to the customer-service panel.
+
+![Image10](https://i.imgur.com/G9D7wXG.png?1)
+![Image11](https://i.imgur.com/pAPE2sI.png?1)
